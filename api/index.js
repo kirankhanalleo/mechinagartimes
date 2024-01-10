@@ -8,7 +8,13 @@ import userRoute from "./routes/User.js";
 const app = express();
 app.use(express.json());
 dotenv.config();
-app.use(cors());
+app.use(cors(
+  {
+    origin:["https://mechinagartimes-client.vercel.app/"],
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
 app.use(cookieParser());
 //middlewares
 app.use("/api/news", newsRoute);
