@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use("/api/news", newsRoute);
 app.use("/api/user", userRoute);
 app.get("/",(req,res)=>{
-  res.json("Hello from backend");
+  res.send("Hello from backend");
 })
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
