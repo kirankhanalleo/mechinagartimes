@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "mechinagartimes-api.vercel.app/api"
+  "proxy": "https://www.mechinagartimes-api.vercel.app/api"
 }
