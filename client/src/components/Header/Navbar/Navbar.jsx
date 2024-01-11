@@ -3,20 +3,28 @@ import "./Navbar.scss"
 import logo from "../../../assets/images/logo.png"
 import { CiSearch  } from "react-icons/ci";
 import { IoMdMenu } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 const Navbar = () => {
-  return (
+    const navigate =useNavigate()
+    const handleClick=()=>{
+        navigate('/')
+    }
+    const handleLinkClick=(category)=>{
+        navigate(`/news/find/${category}`)
+    }
+    return (
     <div className='navbar'>
        <div className="navbarContents">
         <div className="navbarLogo">
-                <img src={logo} alt="mechinagartimes-logo" />
+                <img src={logo} alt="mechinagartimes-logo" onClick={handleClick}/>
             </div>
             <div className="navbarLinks">
-                <span className="link">Politics</span>
-                <span className="link">Business</span>
-                <span className="link">Technology</span>
-                <span className="link">Education</span>
-                <span className="link">Science</span>
-                <span className="link">Sports</span>
+                <span className="link"  onClick={() => handleLinkClick('Politics')}>Politics</span>
+                <span className="link"  onClick={() => handleLinkClick('Business')}>Business</span>
+                <span className="link"  onClick={() => handleLinkClick('Technology')}>Technology</span>
+                <span className="link"  onClick={() => handleLinkClick('Education')}>Education</span>
+                <span className="link"  onClick={() => handleLinkClick('Science')}>Science</span>
+                <span className="link"  onClick={() => handleLinkClick('Sports')}>Sports</span>
             </div>
             <div className="navbarRight">
                 <span className="navbarSearch">

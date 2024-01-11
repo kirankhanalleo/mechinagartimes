@@ -2,9 +2,14 @@ import React from 'react'
 import "./RecentNews.scss"
 import { CiClock1 } from "react-icons/ci";
 import useFetch from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 import truncateText from "../../utils/truncateText"
 const RecentNews = () => {
-const{data,loading,error}=useFetch("/news?latest=true")
+    const navigate = useNavigate()
+    const{data,loading,error}=useFetch("/news?latest=true")
+    const handleClick=(newsId)=>{
+        navigate(`/news/${newsId}`);
+    }
   return (
     <div className="recentNews">
         <div className="recentNewsContents">
@@ -15,7 +20,7 @@ const{data,loading,error}=useFetch("/news?latest=true")
             { loading ? <p>Loading...</p>:
                 <>
                 {data.map(news=>(
-                <div className="newsContent" key={news._id}>
+                <div className="newsContent" key={news._id} onClick={()=>handleClick(news._id)}>
                     <div className="left">
                         <img src={news.image} alt="newsImg" />
                     </div>

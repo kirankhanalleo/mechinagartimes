@@ -1,29 +1,31 @@
 import React from 'react'
-import "./LatestNews.scss"
+import "./NewsList.scss"
 import { MdOutlineArrowOutward } from "react-icons/md";
 import useFetch from '../../hooks/useFetch';
 import truncateText from "../../utils/truncateText"
-import { useNavigate } from 'react-router-dom';
-const LatestNews = () => {
+import { useLocation, useNavigate } from 'react-router-dom';
+const NewsList = () => {
     const navigate = useNavigate()
-    const{data,loading,error}=useFetch("/news?latest=true");
+    const location =useLocation()
+    const category = location.pathname.split('/')[3]
+    const{data,loading}=useFetch(`/news?category=${category}`);
     const handleClick=(newsId)=>{
         navigate(`/news/${newsId}`);
     }
-  return (
-    <div className="latestNews">
-        <div className="latestNewsContents">
-            <div className="heading">
-                <h1>Latest News</h1>
-                <span className="viewAll">View All</span>
-            </div>
-            <div className="newsContainerWrapper">
+    return (
+    <div className='newsList'>
+        <span className="categoryName">
+                {category}
+                <hr className='cat-hr'/>
+            </span>
+        <div className="newsListContent"> 
+        <div className="newsContainerWrapper">
             {loading ? "Loading":
             <>
                 {data.map(news=>(
                     <div className="newsContainer" key={news._id}>
                         <img src={news.image} alt="newsImage" className='newsImage'/>
-                        <h1 className="newsHeadline">{truncateText(news.title,8)}</h1>
+                        <h1 className="newsHeadline">{news.title}</h1>
                         <span className="newsContent">{truncateText(news.content,40)}</span>
                         <span className="readMore" onClick={()=>handleClick(news._id)}>
                             Continue Reading
@@ -39,4 +41,4 @@ const LatestNews = () => {
   )
 }
 
-export default LatestNews
+export default NewsList

@@ -9,6 +9,9 @@
         .navbarLogo{
             img{
                 height:2rem;
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
         .navbarLinks{

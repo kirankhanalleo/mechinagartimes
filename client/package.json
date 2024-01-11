@@ -2,6 +2,7 @@
   "name": "mechinagartimes",
   "version": "0.1.0",
   "private": true,
+  "main":"index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -39,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://www.mechinagartimes-api.vercel.app/api"
+  "proxy": "http://localhost:5000/api"
 }

@@ -64,9 +64,9 @@ export const getAllNews = async (req, res, next) => {
         categories: {
           $in: [queryCategory],
         },
-      });
+      }).sort({ createdAt: -1 });
     } else {
-      allNews = await News.find();
+      allNews = await News.find().sort({ createdAt: -1 });
     }
     res.status(200).json(allNews);
   } catch (error) {

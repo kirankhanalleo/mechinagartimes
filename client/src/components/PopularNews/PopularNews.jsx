@@ -2,8 +2,13 @@ import React from 'react'
 import "./PopularNews.scss"
 import { CiClock1 } from "react-icons/ci";
 import useFetch from '../../hooks/useFetch';
+import { useNavigate } from 'react-router-dom';
 const PopularNews = () => {
-const{data,loading,error}=useFetch("/news?popular=true");
+    const navigate = useNavigate()
+    const{data,loading,error}=useFetch("/news?popular=true");
+    const handleClick=(newsId)=>{
+        navigate(`/news/${newsId}`);
+    }
   return (
     <div className='popularNews'>
         <div className="popularNewsContents">
@@ -15,7 +20,7 @@ const{data,loading,error}=useFetch("/news?popular=true");
                 { loading?<p>Loading...</p> :
                 <>
                 {data.map(news=>(
-                    <div className="newsContent" key={news._id}>
+                    <div className="newsContent" key={news._id} onClick={()=>handleClick(news._id)}>
                         <div className="imageContainer">
                             <img src={news.image} alt="newsImg" srcset="" />
                         </div>
