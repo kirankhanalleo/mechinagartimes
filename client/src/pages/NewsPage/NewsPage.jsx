@@ -5,6 +5,7 @@ import Trending from "../../components/Header/Trending/Trending"
 import RecentNews from "../../components/RecentNews/RecentNews"
 import Categories from "../../components/Categories/Categories"
 import PopularNews from "../../components/PopularNews/PopularNews"
+import NewsLetter from "../../components/NewsLetter/NewsLetter"
 import Footer from "../../components/Footer/Footer"
 import useFetch from '../../hooks/useFetch'
 import { useLocation } from 'react-router-dom'
@@ -39,6 +40,7 @@ const NewsPage = () => {
           <div className='sidebar'>
             <RecentNews />
             <Categories />
+            <NewsLetter/>
           </div>
         </div>
         <Footer/>

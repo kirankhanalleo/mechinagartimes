@@ -58,7 +58,7 @@ export const getAllNews = async (req, res, next) => {
     } else if (queryLatestNews) {
       allNews = await News.find().sort({ createdAt: -1 }).limit(4);
     } else if (queryPopularNews) {
-      allNews = await News.find().sort({ createdAt: -1 }).limit(4);
+      allNews = await News.find().sort({ createdAt: -1 }).limit(6);
     } else if (queryCategory) {
       allNews = await News.find({
         categories: {

@@ -10,7 +10,7 @@ const Navbar = () => {
         navigate('/')
     }
     const handleLinkClick=(category)=>{
-        navigate(`/news/find/${category}`)
+        navigate(`/news/category/${category}`)
     }
     return (
     <div className='navbar'>
